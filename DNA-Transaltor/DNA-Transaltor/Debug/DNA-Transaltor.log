@@ -1,2 +1,3 @@
 ﻿  DNA-Transaltor.cpp
-  DNA-Transaltor.vcxproj -> D:\College\8. semester 8\CSE 336 Distributed Computing\OpenMP-DNA-Translator\DNA-Transaltor\Debug\DNA-Transaltor.exe
+D:\College\8. semester 8\CSE 336 Distributed Computing\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(21,31): error C2440: 'initializing': cannot convert from 'std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<const std::string,std::string>>>>' to 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+D:\College\8. semester 8\CSE 336 Distributed Computing\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(21,14): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
