@@ -5,6 +5,7 @@
 #include <fstream>
 #include <map>
 #include <string>
+#include <omp.h>
 using namespace std;
 //HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 //SetConsoleTextAttribute(hConsole, k);
@@ -41,14 +42,35 @@ int main(){
     }
     str.erase(remove_if(str.begin(), str.end(), [](char c) { return !isalpha(c); }), str.end());
 
-   //cout << str;
-   // print_map(codons);
     string temp;
+
+    omp_set_num_threads(50);
+
+    double start = omp_get_wtime();
+
+
+    //   Sequential Part
+
+    //for (int i = 0; i < str.length(); i += 3) {
+    //    temp = str.substr(i, 3);
+    //    //cout << temp << endl;
+    //    codons[temp]++;
+    //}
+
+
+#pragma omp parallel for schedule (dynamic) private(temp)
     for (int i = 0;i < str.length();i+=3) {
+       // printf("thread [%d] \n", omp_get_thread_num());
         temp = str.substr(i, 3);
+       #pragma omp critical 
         codons[temp]++;
     }
-    print_map(codons);
+
+    double end = omp_get_wtime();
+
+    printf("Time Consumed : %f  seconds\n",end-start);
+
+    //print_map(codons);
 }
 
 
