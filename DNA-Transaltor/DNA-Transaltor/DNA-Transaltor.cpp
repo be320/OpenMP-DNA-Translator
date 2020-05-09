@@ -1,25 +1,33 @@
 #include <iostream>
 #include <string.h>
-#include <iterator> 
+#include <iterator>
+#include <sstream>
+#include <fstream>
 #include <map>
 using namespace std;
 
-map<string, string> codones;
 
-int main()
-{
-    codones.insert(pair<string, string>("TTT","Phe"));
-    codones.insert(pair<string, string>("TTC", "Phe"));
-    codones.insert(pair<string, string>("TTA", "Leu"));
-    codones.insert(pair<string, string>("TTG", "Leu"));
-    codones.insert(pair<string, string>("TCT", "Ser"));
-    codones.insert(pair<string, string>("TCC", "Ser"));
-    codones.insert(pair<string, string>("TCA", "Ser"));
-    codones.insert(pair<string, string>("TCG", "Ser"));
-    string y;
-    cin >> y;
-    string x = codones.find(y);
-    cout <<x;
+void read_map(map<string, string> &m, ifstream &is){
+    string key, value;
+    while ( is >> key >> value ) {
+    m[key] = value;
+    }
+}
+
+void print_map(map<string, string> m){
+    map<string, string>::iterator itr;
+    for (itr = m.begin(); itr != m.end(); ++itr) {
+        cout << itr->first << '\t' << itr->second << '\n';
+    }
+}
+
+int main(){
+    map<string, string> codons;
+
+    ifstream myfile;
+    myfile.open("codon.txt");
+    read_map(codons, myfile);
+    print_map(codons);
 }
 
 
