@@ -1,20 +1,21 @@
 ﻿  DNA-Transaltor.cpp
-D:\Semester 8\Distributed Computing\Final Project\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(30,23): warning C4018: '<': signed/unsigned mismatch
-D:\Semester 8\Distributed Computing\Final Project\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(44,22): warning C4018: '<': signed/unsigned mismatch
-D:\Semester 8\Distributed Computing\Final Project\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(90,31): warning C4018: '<': signed/unsigned mismatch
-D:\Semester 8\Distributed Computing\Final Project\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(102,31): warning C4018: '<': signed/unsigned mismatch
-D:\Semester 8\Distributed Computing\Final Project\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(114,31): warning C4018: '<': signed/unsigned mismatch
-D:\Semester 8\Distributed Computing\Final Project\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(125,31): warning C4018: '<': signed/unsigned mismatch
-D:\Semester 8\Distributed Computing\Final Project\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(137,31): warning C4018: '<': signed/unsigned mismatch
-D:\Semester 8\Distributed Computing\Final Project\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(149,31): warning C4018: '<': signed/unsigned mismatch
-D:\Semester 8\Distributed Computing\Final Project\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(160,31): warning C4018: '<': signed/unsigned mismatch
-D:\Semester 8\Distributed Computing\Final Project\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(171,31): warning C4018: '<': signed/unsigned mismatch
-D:\Semester 8\Distributed Computing\Final Project\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(182,31): warning C4018: '<': signed/unsigned mismatch
-D:\Semester 8\Distributed Computing\Final Project\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(193,31): warning C4018: '<': signed/unsigned mismatch
-D:\Semester 8\Distributed Computing\Final Project\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(205,31): warning C4018: '<': signed/unsigned mismatch
-D:\Semester 8\Distributed Computing\Final Project\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(216,31): warning C4018: '<': signed/unsigned mismatch
-D:\Semester 8\Distributed Computing\Final Project\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(227,31): warning C4018: '<': signed/unsigned mismatch
-D:\Semester 8\Distributed Computing\Final Project\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(238,31): warning C4018: '<': signed/unsigned mismatch
-D:\Semester 8\Distributed Computing\Final Project\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(249,31): warning C4018: '<': signed/unsigned mismatch
-D:\Semester 8\Distributed Computing\Final Project\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(260,31): warning C4018: '<': signed/unsigned mismatch
-  DNA-Transaltor.vcxproj -> D:\Semester 8\Distributed Computing\Final Project\OpenMP-DNA-Translator\DNA-Transaltor\Debug\DNA-Transaltor.exe
+E:\College\Semester 8\Distributed Computing\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(81,23): warning C4018: '<': signed/unsigned mismatch
+E:\College\Semester 8\Distributed Computing\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(79,9): warning C4101: 'key': unreferenced local variable
+E:\College\Semester 8\Distributed Computing\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(96,22): warning C4018: '<': signed/unsigned mismatch
+E:\College\Semester 8\Distributed Computing\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(144,31): warning C4018: '<': signed/unsigned mismatch
+E:\College\Semester 8\Distributed Computing\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(157,31): warning C4018: '<': signed/unsigned mismatch
+E:\College\Semester 8\Distributed Computing\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(170,31): warning C4018: '<': signed/unsigned mismatch
+E:\College\Semester 8\Distributed Computing\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(182,31): warning C4018: '<': signed/unsigned mismatch
+E:\College\Semester 8\Distributed Computing\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(195,31): warning C4018: '<': signed/unsigned mismatch
+E:\College\Semester 8\Distributed Computing\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(208,31): warning C4018: '<': signed/unsigned mismatch
+E:\College\Semester 8\Distributed Computing\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(220,31): warning C4018: '<': signed/unsigned mismatch
+E:\College\Semester 8\Distributed Computing\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(232,31): warning C4018: '<': signed/unsigned mismatch
+E:\College\Semester 8\Distributed Computing\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(244,31): warning C4018: '<': signed/unsigned mismatch
+E:\College\Semester 8\Distributed Computing\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(256,31): warning C4018: '<': signed/unsigned mismatch
+E:\College\Semester 8\Distributed Computing\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(269,31): warning C4018: '<': signed/unsigned mismatch
+E:\College\Semester 8\Distributed Computing\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(281,31): warning C4018: '<': signed/unsigned mismatch
+E:\College\Semester 8\Distributed Computing\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(293,31): warning C4018: '<': signed/unsigned mismatch
+E:\College\Semester 8\Distributed Computing\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(305,31): warning C4018: '<': signed/unsigned mismatch
+E:\College\Semester 8\Distributed Computing\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(316,31): warning C4018: '<': signed/unsigned mismatch
+E:\College\Semester 8\Distributed Computing\OpenMP-DNA-Translator\DNA-Transaltor\DNA-Transaltor\DNA-Transaltor.cpp(327,31): warning C4018: '<': signed/unsigned mismatch
+  DNA-Transaltor.vcxproj -> E:\College\Semester 8\Distributed Computing\OpenMP-DNA-Translator\DNA-Transaltor\Debug\DNA-Transaltor.exe
