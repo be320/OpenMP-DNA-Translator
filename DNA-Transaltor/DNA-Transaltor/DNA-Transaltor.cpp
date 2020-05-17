@@ -57,6 +57,8 @@ void read_map(map<string, int>& m1, map<string, string>& m2, map<string, int>& m
         m1[key] = value;
         is2 >> key >> value2;
         m2[key] = value2;
+        is3 >> key >> value;
+        m3[key] = value;
     }
 }
 
@@ -68,12 +70,16 @@ void print_map(map<string, int> m1, map<string, int> m2) {
     const size_t sum1 = accumulate(begin(m2), end(m2), 0, [](const size_t previous, const pair<const string, size_t>& p)
         { return previous + p.second; });
 
-    cout << "Codons \t" << "Number\t" << "Percentage\n";
-    for (itr1 = m1.begin(); itr1 != m1.end(); ++itr1)
-        cout << itr1->first << '\t' << itr1->second << '\t'<< fixed << setprecision(3) << (float(itr1->second) / float(sum)) * 100 << '%' << '\n';
-    cout << "\nAmino Acids \t" << "Number\t" << "Percentage\n";
-    for (itr2 = m2.begin(); itr2 != m2.end(); ++itr2)
-        cout << itr2->first << "\t\t" << itr2->second << '\t' << fixed << setprecision(3) << (float(itr2->second) / float(sum1)) * 100 << '%' << '\n';
+    cout << "Codons \t" << "Number\t" << "Percentage\tAmino Acids \t" << "Number\t" << "Percentage\n";
+    for (itr1 = m1.begin(), itr2 = m2.begin(); itr1 != m1.end(); ++itr1) {
+        cout << itr1->first << '\t' << itr1->second << '\t' << fixed << setprecision(2) << (float(itr1->second) / float(sum)) * 100 << "%\t";
+        if (itr2 != m2.end()) {
+            cout << '\t' << itr2->first << "\t\t" << itr2->second << '\t' << fixed << setprecision(2) << (float(itr2->second) / float(sum1)) * 100 << '%' << '\n';
+            ++itr2;
+        }
+        else
+            cout << endl;
+    }
 }
 
 void sequential(string str, map<string, int> &codons, map<string, string> &amino, map<string, int> &result) {
