@@ -215,7 +215,6 @@ void sectionParallelism(int nThreads, string str, map<string, int>&codons, map<s
                     codons[temp]++;
                     result[amino[temp]]++;
                 }
-                //printf("Section %d executed by thread number %d \n", ++counter, id);
             }
 #pragma omp section
             {
@@ -249,8 +248,6 @@ void sectionParallelism(int nThreads, string str, map<string, int>&codons, map<s
                     codons[temp]++;
                     result[amino[temp]]++;
                 }
-                //printf("Section %d executed by thread number %d \n", ++counter, id);
-
             }
 #pragma omp section
             {
@@ -262,7 +259,6 @@ void sectionParallelism(int nThreads, string str, map<string, int>&codons, map<s
                     codons[temp]++;
                     result[amino[temp]]++;
                 }
-                //printf("Section %d executed by thread number %d \n", ++counter, id);
             }
 #pragma omp section
             {
@@ -274,7 +270,6 @@ void sectionParallelism(int nThreads, string str, map<string, int>&codons, map<s
                     codons[temp]++;
                     result[amino[temp]]++;
                 }
-                //printf("Section %d executed by thread number %d \n", ++counter, id);
             }
 #pragma omp section
             {
@@ -306,7 +301,6 @@ void sectionParallelism(int nThreads, string str, map<string, int>&codons, map<s
                     codons[temp]++;
                     result[amino[temp]]++;
                 }
-                //printf("Section %d executed by thread number %d \n", ++counter, id);
             }
 #pragma omp section
             {
@@ -317,7 +311,6 @@ void sectionParallelism(int nThreads, string str, map<string, int>&codons, map<s
                     codons[temp]++;
                     result[amino[temp]]++;
                 }
-                //printf("Section %d executed by thread number %d \n", ++counter, id);
             }
         }
     }
