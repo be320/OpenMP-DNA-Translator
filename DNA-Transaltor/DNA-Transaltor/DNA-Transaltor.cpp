@@ -130,7 +130,7 @@ void sectionParallelism(int nThreads, string str, map<string, int>&codons, map<s
     string str1;
     omp_set_num_threads(nThreads);
     double start = omp_get_wtime();
-#pragma omp parallel shared(str,counter) 
+#pragma omp parallel shared(str) 
     {
 
 #pragma omp sections private(i,id,temp,str1)
