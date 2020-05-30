@@ -12,12 +12,12 @@ using namespace std;
 
 void read_map(map<string, int>& m1, map<string, string>& m2, map<string, int>& m3, ifstream& is1, ifstream& is2, ifstream& is3);
 void print_map(map<string, int> m1, map<string, int> m2);
-void sequential(string str, map<string, int> &codons, map<string, string> &amino, map<string, int> &result);
+void sequential(string str, map<string, int>& codons, map<string, string>& amino, map<string, int>& result);
 void loopParallelism(int nThreads, string str, map<string, int>& codons, map<string, string>& amino, map<string, int>& result);
 string readFile(map<string, int>& codons, map<string, string>& amino, map<string, int>& result);
-void sectionParallelism(int nThreads, string str, map<string, int>& codons, map<string, string>& amino, map<string, int>&result);
+void sectionParallelism(int nThreads, string str, map<string, int>& codons, map<string, string>& amino, map<string, int>& result);
 
-int main(){
+int main() {
     map<string, int> codons;
     map<string, string> amino;
     map<string, int> result;
@@ -66,9 +66,9 @@ void print_map(map<string, int> m1, map<string, int> m2) {
     map<string, int>::iterator itr1;
     map<string, int>::iterator itr2;
     const size_t sum = accumulate(begin(m1), end(m1), 0, [](const size_t previous, const pair<const string, size_t>& p)
-        { return previous + p.second; });
+    { return previous + p.second; });
     const size_t sum1 = accumulate(begin(m2), end(m2), 0, [](const size_t previous, const pair<const string, size_t>& p)
-        { return previous + p.second; });
+    { return previous + p.second; });
 
     cout << "Codons \t" << "Number\t" << "Percentage\tAmino Acids \t" << "Number\t" << "Percentage\n";
     for (itr1 = m1.begin(), itr2 = m2.begin(); itr1 != m1.end(); ++itr1) {
@@ -82,7 +82,7 @@ void print_map(map<string, int> m1, map<string, int> m2) {
     }
 }
 
-void sequential(string str, map<string, int> &codons, map<string, string> &amino, map<string, int> &result) {
+void sequential(string str, map<string, int>& codons, map<string, string>& amino, map<string, int>& result) {
     double start = omp_get_wtime();
     string temp;
     for (int i = 0; i < str.length(); i += 3) {
@@ -95,25 +95,24 @@ void sequential(string str, map<string, int> &codons, map<string, string> &amino
     printf("Time Consumed : %f  seconds\n", end - start);
 }
 
-void loopParallelism(int nThreads, string str, map<string, int>&codons, map<string, string>& amino, map<string, int>& result) {
+void loopParallelism(int nThreads, string str, map<string, int>& codons, map<string, string>& amino, map<string, int>& result) {
     string temp;
     omp_set_num_threads(nThreads);
     double start = omp_get_wtime();
 #pragma omp parallel for schedule (dynamic) private(temp)
-    for (int i = 0;i < str.length();i += 3) {
+    for (int i = 0; i < str.length(); i += 3) {
         temp = str.substr(i, 3);
-        #pragma omp critical
-                    {
-                        codons[temp]++;
-                        result[amino[temp]]++;
-                    }
+                            #pragma omp atomic
+                            codons[temp]++;
+                            #pragma omp atomic
+                            result[amino[temp]]++;
     }
     double end = omp_get_wtime();
     print_map(codons, result);
     printf("Time Consumed : %f  seconds\n", end - start);
 }
 
-string readFile(map<string, int>&codons, map<string, string>&amino, map<string, int>&result) {
+string readFile(map<string, int>& codons, map<string, string>& amino, map<string, int>& result) {
     ifstream myfile1, myfile2, myfile3;
     myfile1.open("codon.txt");
     myfile2.open("aminoAcid.txt");
@@ -133,7 +132,7 @@ string readFile(map<string, int>&codons, map<string, string>&amino, map<string, 
     return str;
 }
 
-void sectionParallelism(int nThreads, string str, map<string, int>&codons, map<string, string>&amino, map<string, int>&result) {
+void sectionParallelism(int nThreads, string str, map<string, int>& codons, map<string, string>& amino, map<string, int>& result) {
     string temp;
     int id, i;
     string str1;
@@ -151,12 +150,10 @@ void sectionParallelism(int nThreads, string str, map<string, int>&codons, map<s
                 for (i = 0; i < str1.length(); i += 3)
                 {
                     temp = str1.substr(i, 3);
-                    #pragma omp critical
-                    {
-                        codons[temp]++;
-                        result[amino[temp]]++;
-
-                    }
+                    #pragma omp atomic
+                    codons[temp]++;
+                    #pragma omp atomic
+                    result[amino[temp]]++;
                 }
             }
 
@@ -167,12 +164,10 @@ void sectionParallelism(int nThreads, string str, map<string, int>&codons, map<s
                 for (i = 0; i < str1.length(); i += 3)
                 {
                     temp = str1.substr(i, 3);
-#pragma omp critical
-                    {
-                        codons[temp]++;
-                        result[amino[temp]]++;
-
-                    }
+                    #pragma omp atomic
+                    codons[temp]++;
+                    #pragma omp atomic
+                    result[amino[temp]]++;
                 }
             }
 
@@ -183,12 +178,10 @@ void sectionParallelism(int nThreads, string str, map<string, int>&codons, map<s
                 for (i = 0; i < str1.length(); i += 3)
                 {
                     temp = str1.substr(i, 3);
-                    #pragma omp critical
-                    {
-                        codons[temp]++;
-                        result[amino[temp]]++;
-
-                    }
+                    #pragma omp atomic
+                    codons[temp]++;
+                    #pragma omp atomic
+                    result[amino[temp]]++;
                 }
             }
 #pragma omp section
@@ -198,12 +191,10 @@ void sectionParallelism(int nThreads, string str, map<string, int>&codons, map<s
                 for (i = 0; i < str1.length(); i += 3)
                 {
                     temp = str1.substr(i, 3);
-#pragma omp critical
-                    {
-                        codons[temp]++;
-                        result[amino[temp]]++;
-
-                    }
+                    #pragma omp atomic
+                    codons[temp]++;
+                    #pragma omp atomic
+                    result[amino[temp]]++;
                 }
             }
 
@@ -214,12 +205,10 @@ void sectionParallelism(int nThreads, string str, map<string, int>&codons, map<s
                 for (i = 0; i < str1.length(); i += 3)
                 {
                     temp = str1.substr(i, 3);
-#pragma omp critical
-                    {
-                        codons[temp]++;
-                        result[amino[temp]]++;
-
-                    }
+                    #pragma omp atomic
+                    codons[temp]++;
+                    #pragma omp atomic
+                    result[amino[temp]]++;
                 }
             }
 
@@ -230,12 +219,10 @@ void sectionParallelism(int nThreads, string str, map<string, int>&codons, map<s
                 for (i = 0; i < str1.length(); i += 3)
                 {
                     temp = str1.substr(i, 3);
-#pragma omp critical
-                    {
-                        codons[temp]++;
-                        result[amino[temp]]++;
-
-                    }
+                    #pragma omp atomic
+                    codons[temp]++;
+                    #pragma omp atomic
+                    result[amino[temp]]++;
                 }
             }
 #pragma omp section
@@ -245,12 +232,10 @@ void sectionParallelism(int nThreads, string str, map<string, int>&codons, map<s
                 for (i = 0; i < str1.length(); i += 3)
                 {
                     temp = str1.substr(i, 3);
-#pragma omp critical
-                    {
-                        codons[temp]++;
-                        result[amino[temp]]++;
-
-                    }
+                    #pragma omp atomic
+                    codons[temp]++;
+                    #pragma omp atomic
+                    result[amino[temp]]++;
                 }
             }
 #pragma omp section
@@ -260,12 +245,10 @@ void sectionParallelism(int nThreads, string str, map<string, int>&codons, map<s
                 for (i = 0; i < str1.length(); i += 3)
                 {
                     temp = str1.substr(i, 3);
-#pragma omp critical
-                    {
-                        codons[temp]++;
-                        result[amino[temp]]++;
-
-                    }
+                    #pragma omp atomic
+                    codons[temp]++;
+                    #pragma omp atomic
+                    result[amino[temp]]++;
                 }
             }
 #pragma omp section
@@ -275,12 +258,10 @@ void sectionParallelism(int nThreads, string str, map<string, int>&codons, map<s
                 for (i = 0; i < str1.length(); i += 3)
                 {
                     temp = str1.substr(i, 3);
-#pragma omp critical
-                    {
-                        codons[temp]++;
-                        result[amino[temp]]++;
-
-                    }
+                    #pragma omp atomic
+                    codons[temp]++;
+                    #pragma omp atomic
+                    result[amino[temp]]++;
                 }
             }
 #pragma omp section
@@ -290,12 +271,10 @@ void sectionParallelism(int nThreads, string str, map<string, int>&codons, map<s
                 for (i = 0; i < str1.length(); i += 3)
                 {
                     temp = str1.substr(i, 3);
-#pragma omp critical
-                    {
-                        codons[temp]++;
-                        result[amino[temp]]++;
-
-                    }
+                    #pragma omp atomic
+                    codons[temp]++;
+                    #pragma omp atomic
+                    result[amino[temp]]++;
                 }
             }
 #pragma omp section
@@ -305,12 +284,10 @@ void sectionParallelism(int nThreads, string str, map<string, int>&codons, map<s
                 for (i = 0; i < str1.length(); i += 3)
                 {
                     temp = str1.substr(i, 3);
-#pragma omp critical
-                    {
-                        codons[temp]++;
-                        result[amino[temp]]++;
-
-                    }
+                    #pragma omp atomic
+                    codons[temp]++;
+                    #pragma omp atomic
+                    result[amino[temp]]++;
                 }
             }
 #pragma omp section
@@ -320,12 +297,10 @@ void sectionParallelism(int nThreads, string str, map<string, int>&codons, map<s
                 for (i = 0; i < str1.length(); i += 3)
                 {
                     temp = str1.substr(i, 3);
-#pragma omp critical
-                    {
-                        codons[temp]++;
-                        result[amino[temp]]++;
-
-                    }
+                    #pragma omp atomic
+                    codons[temp]++;
+                    #pragma omp atomic
+                    result[amino[temp]]++;
                 }
             }
 #pragma omp section
@@ -335,54 +310,46 @@ void sectionParallelism(int nThreads, string str, map<string, int>&codons, map<s
                 for (i = 0; i < str1.length(); i += 3)
                 {
                     temp = str1.substr(i, 3);
-#pragma omp critical
-                    {
-                        codons[temp]++;
-                        result[amino[temp]]++;
-
-                    }
+                    #pragma omp atomic
+                    codons[temp]++;
+                    #pragma omp atomic
+                    result[amino[temp]]++;
                 }
             }
 #pragma omp section
             {
                 str1 = str.substr(66456, 5112);
                 id = omp_get_thread_num();
-                for (i = 0; i < str1.length(); i += 3){
+                for (i = 0; i < str1.length(); i += 3) {
                     temp = str1.substr(i, 3);
-#pragma omp critical
-                    {
-                        codons[temp]++;
-                        result[amino[temp]]++;
-
-                    }
+                    #pragma omp atomic
+                    codons[temp]++;
+                    #pragma omp atomic
+                    result[amino[temp]]++;
                 }
             }
 #pragma omp section
             {
                 str1 = str.substr(71568, 5112);
                 id = omp_get_thread_num();
-                for (i = 0; i < str1.length(); i += 3){
+                for (i = 0; i < str1.length(); i += 3) {
                     temp = str1.substr(i, 3);
-#pragma omp critical
-                    {
-                        codons[temp]++;
-                        result[amino[temp]]++;
-
-                    }
+                    #pragma omp atomic
+                    codons[temp]++;
+                    #pragma omp atomic
+                    result[amino[temp]]++;
                 }
             }
 #pragma omp section
             {
                 str1 = str.substr(76680, 5106);
                 id = omp_get_thread_num();
-                for (i = 0; i < str1.length(); i += 3){
+                for (i = 0; i < str1.length(); i += 3) {
                     temp = str1.substr(i, 3);
-#pragma omp critical
-                    {
-                        codons[temp]++;
-                        result[amino[temp]]++;
-
-                    }
+                    #pragma omp atomic
+                    codons[temp]++;
+                    #pragma omp atomic
+                    result[amino[temp]]++;
                 }
             }
         }
@@ -391,5 +358,3 @@ void sectionParallelism(int nThreads, string str, map<string, int>&codons, map<s
     print_map(codons, result);
     printf("Time Consumed : %f  seconds\n", end - start);
 }
-
-
