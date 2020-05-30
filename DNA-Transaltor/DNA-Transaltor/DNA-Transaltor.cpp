@@ -102,10 +102,10 @@ void loopParallelism(int nThreads, string str, map<string, int>& codons, map<str
 #pragma omp parallel for schedule (dynamic) private(temp)
     for (int i = 0; i < str.length(); i += 3) {
         temp = str.substr(i, 3);
-                            #pragma omp atomic
-                            codons[temp]++;
-                            #pragma omp atomic
-                            result[amino[temp]]++;
+        #pragma omp atomic
+        codons[temp]++;
+        #pragma omp atomic
+        result[amino[temp]]++;
     }
     double end = omp_get_wtime();
     print_map(codons, result);
